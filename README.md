@@ -12,7 +12,7 @@
 
 ## Features
 
-- **Two backends, one interface** — connect via **NWC (Nostr Wallet Connect)** to almost any modern wallet (Alby Hub, coinos, Primal, LNbits, …) or directly to your own **LND node** over REST. Adding more backends is a single file.
+- **Two backends, one interface** — connect via **NWC (Nostr Wallet Connect)** to almost any modern wallet (Alby Hub, coinos, Primal, LNbits, Rizful, …) or directly to your own **LND node** over REST. Adding more backends is a single file.
 - **Spending guard-rails built for agents** — a per-payment cap (`MAX_SEND_SATS`), a rolling 24-hour budget (`DAILY_BUDGET_SATS`), and a routing-fee ceiling (`MAX_FEE_PERCENT`). Set `MAX_SEND_SATS=0` for a receive-only wallet.
 - **Trust, but verify** — invoices are decoded locally before paying; expired invoices are rejected; Lightning-address invoices are checked against the requested amount so a malicious LNURL server can't inflate the charge.
 - **L402 paywalls (machine-payable APIs)** — `l402_fetch` handles the whole [L402/LSAT](https://github.com/lightninglabs/L402) flow: it reads the HTTP 402 challenge, quotes the price to the agent, pays the invoice through whichever backend you configured (direct LND or any NWC wallet — no extra services needed), verifies the preimage, and retries with the `Authorization: L402 macaroon:preimage` token. Tokens are cached per origin so a resource is never paid twice.
